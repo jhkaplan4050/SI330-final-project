@@ -113,12 +113,12 @@ def prep_cities_for_mapping():
     # Create summary 
     cities['Summary'] = cities.apply(create_summary, axis=1)
     
+    cities = cities.reset_index()
+    
     return cities
 
 
 
-# Accepts: nothing
-# Returns: nothing
 
 def create_map(df):
     # Create base for Map
@@ -138,7 +138,7 @@ def create_map(df):
             icon=folium.Icon(color=city['Marker_Color'], prefix='fa', icon='circle'),
         ).add_to(my_map)  
     
-    my_map
+    return my_map
 
 
 def to_int(aqi):
@@ -182,11 +182,10 @@ def create_figure1(params):
     plt.rc('font', **font)
     plt.show()
     #correlation coefficient, p-value
-    print("correlation coefficient, p-value:", stats.pearsonr(aqi, population))
+    print("correlation coefficient, p-value:", stats.pearsonr(x, y1))
     
 
-def create_figure2():
-    params = set_parameters()
+def create_figure2(params):
     x = params['aqi']
     y2 = params['elevation']
     m, b = np.polyfit(x, y2, 1)
@@ -202,11 +201,10 @@ def create_figure2():
     plt.show()
     
     #correlation coefficient, p-value
-    print("correlation coefficient, p-value:", stats.pearsonr(aqi, elevation))
+    print("correlation coefficient, p-value:", stats.pearsonr(x, y2))
 
 
-def create_figure3():
-    params = set_parameters()
+def create_figure3(params):
     x = params['aqi']
     y3 = params['pm25']
     m, b = np.polyfit(x, y3, 1)
@@ -223,11 +221,10 @@ def create_figure3():
     plt.show()
     
     #correlation coefficient, p-value
-    print("correlation coefficient, p-value:", stats.pearsonr(aqi, pm25))
+    print("correlation coefficient, p-value:", stats.pearsonr(x, y3))
 
 
-def create_figure4():
-    params = set_parameters()
+def create_figure4(params):
     x = params['aqi']
     y4 = params['pm10']
     m, b = np.polyfit(x, y4, 1)
@@ -245,10 +242,9 @@ def create_figure4():
     plt.show()
     
     #correlation coefficient, p-value
-    print("correlation coefficient, p-value:",stats.pearsonr(aqi, pm10))
+    print("correlation coefficient, p-value:",stats.pearsonr(x, y4))
 
-def create_figure5():
-    params = set_parameters()
+def create_figure5(params):
     x = params['aqi']
     y5 = params['o3']
     m, b = np.polyfit(x, y5, 1)
@@ -265,5 +261,5 @@ def create_figure5():
     plt.show()
     
     #correlation coefficient, p-value
-    print("correlation coefficient, p-value:",stats.pearsonr(aqi, o3))
+    print("correlation coefficient, p-value:",stats.pearsonr(x, y5))
 
