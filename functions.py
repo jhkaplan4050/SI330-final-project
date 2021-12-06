@@ -63,7 +63,7 @@ def create_marker_color(aqi):
     if (aqi>=0) and (aqi<=50):
         return "green"
     elif (aqi>=51) and (aqi<=100):
-        return "yellow"
+        return "lightgreen"
     elif (aqi>=101) and (aqi<=150):
         return "orange"
     elif (aqi>=151) and (aqi<=200):
@@ -71,7 +71,7 @@ def create_marker_color(aqi):
     elif (aqi>=201) and (aqi<=300):
         return "purple"
     elif aqi>= 301:
-        return "maroon"
+        return "darkred"
     else:
         return "white"
 
