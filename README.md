@@ -1,3 +1,4 @@
 # SI330-final-project
 
-Project in progress!
+An Analysis of Worldwide Air Quality
+By Julia Kaplan and Analese Lutz
